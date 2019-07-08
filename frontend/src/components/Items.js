@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import Modal from '../components/Modal'
 
 export default class Items extends Component {
@@ -35,7 +36,7 @@ export default class Items extends Component {
 
         handleSubmit = item => {
             this.toggle();
-            debugger
+
             if (item.id) {
                 this.props.editTask(item);
                 return;

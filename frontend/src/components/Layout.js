@@ -1,9 +1,35 @@
 import React, { Component } from 'react';
 
+import Modal from '../components/Modal'
 import ConnectedItems from '../containers/ConnectedItems'
 
 
 class Layout extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            activeItem: {
+                title: "",
+                description: "",
+                completed: false
+            },
+        };
+    }
+
+    createItem = () => {
+        const item = { title: "", description: "", completed: false };
+        this.setState({ activeItem: item, modal: !this.state.modal });
+    };
+
+    toggle = () => {
+        this.setState({ modal: !this.state.modal });
+    };
+
+    handleSubmit = item => {
+        this.toggle();
+        this.props.addTask(item);
+    };
 
     render() {
         const { data, placeholder, title } = this.props;
@@ -17,7 +43,20 @@ class Layout extends Component {
         ) : (
             <div className="list-group-item d-flex justify-content-between align-items-center">
                 {placeholder}
+                <button onClick={this.createItem} className="btn btn-primary">
+                      Add task
+                </button>
             </div>
+        );
+
+        let modal = this.state.modal ? (
+            <Modal
+                activeItem={this.state.activeItem}
+                toggle={this.toggle}
+                onSave={this.handleSubmit}
+            />
+        ) : (
+            null
         );
 
         return (
@@ -28,6 +67,7 @@ class Layout extends Component {
                 <div className="card p-3">
                   <ul className="list-group list-group-flush">
                     {table}
+                    {modal}
                   </ul>
                 </div>
               </div>
