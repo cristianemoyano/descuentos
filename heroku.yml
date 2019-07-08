@@ -10,3 +10,5 @@ release:
   image: backend
   command:
     - python3 manage.py migrate --noinput
+run:
+  backend: gunicorn backend.backend.wsgi
