@@ -11,4 +11,5 @@ release:
   command:
     - python3 manage.py migrate --noinput
 run:
-  backend: gunicorn backend.wsgi
+  backend: gunicorn backend.wsgi --timeout 15 --keep-alive 5 --log-level debug
+  frontend: npm start
