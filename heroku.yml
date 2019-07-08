@@ -16,4 +16,4 @@ build:
   docker:
     web: frontend/Dockerfile
 run:
-  web: npm start
+  web: npm run build
