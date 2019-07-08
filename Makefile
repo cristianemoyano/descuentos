@@ -3,3 +3,6 @@ run:
 
 build:
 	docker-compose build
+
+deploy:
+	git push heroku master
