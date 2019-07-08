@@ -1,13 +1,19 @@
-setup:
-  addons:
-    - plan: heroku-postgresql
-      as: DATABASE
+# setup:
+#   addons:
+#     - plan: heroku-postgresql
+#       as: DATABASE
+# build:
+#   docker:
+#     web: backend/Dockerfile
+# release:
+#   image: web
+#   command:
+#     - python3 manage.py migrate --noinput
+# run:
+#   web: gunicorn backend.wsgi --timeout 15 --keep-alive 5 --log-level debug
+
 build:
   docker:
-    web: backend/Dockerfile
-release:
-  image: web
-  command:
-    - python3 manage.py migrate --noinput
+    web: frontend/Dockerfile
 run:
-  web: gunicorn backend.wsgi --timeout 15 --keep-alive 5 --log-level debug
+  web: npm start
