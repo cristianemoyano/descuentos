@@ -1,5 +1,7 @@
 import axios from "axios";
 
+const baseApiURL = process.env.REACT_APP_API_URL;
+
 // FETCH TASK
 
 export const FETCH_TASKS_PENDING = 'FETCH_TASKS_PENDING';
@@ -30,7 +32,7 @@ export function fetchTasks() {
     return dispatch => {
         dispatch(fetchTasksPending());
         axios
-        .get("http://localhost:8000/api/todos/")
+        .get(`${baseApiURL}/todos/`)
         .then(res => dispatch(fetchTasksSuccess(res.data)))
         .catch(error => {
             dispatch(fetchTasksError(error));
@@ -72,7 +74,7 @@ export function deleteTask(taskId) {
     return dispatch => {
         dispatch(deleteTaskPending());
         axios
-        .delete(`http://localhost:8000/api/todos/${taskId}`)
+        .delete(`${baseApiURL}/todos/${taskId}`)
         .then(res => dispatch(deleteTaskSuccess(res.data)))
         .catch(error => {
             dispatch(deleteTaskError(error));
@@ -114,7 +116,7 @@ export function editTask(item) {
     return dispatch => {
         dispatch(editTaskPending());
         axios
-        .put(`http://localhost:8000/api/todos/${item.id}/`, item)
+        .put(`${baseApiURL}/todos/${item.id}/`, item)
         .then(res => dispatch(editTaskSuccess(res.data)))
         .catch(error => {
             dispatch(editTaskError(error));
@@ -156,7 +158,7 @@ export function addTask(item) {
     return dispatch => {
         dispatch(addTaskPending());
         axios
-        .post(`http://localhost:8000/api/todos/`, item)
+        .post(`${baseApiURL}/todos/`, item)
         .then(res => dispatch(addTaskSuccess(res.data)))
         .catch(error => {
             dispatch(addTaskError(error));
