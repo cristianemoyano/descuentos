@@ -6,3 +6,7 @@ build:
   docker:
     backend: backend/Dockerfile
     frontend: frontend/Dockerfile
+release:
+  image: backend
+  command:
+    - python3 manage.py migrate --noinput

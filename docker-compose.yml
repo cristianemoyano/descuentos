@@ -17,10 +17,10 @@ services:
     volumes:
       - ./backend:/app/backend
     ports:
-      - "80:80"
+      - "8000:8000"
     stdin_open: true
     tty: true
-    command: python3 manage.py runserver
+    command: python3 manage.py runserver 0.0.0.0:8000
     depends_on:
       - migration
       - db
