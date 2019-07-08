@@ -1,9 +1,17 @@
 version: "3.2"
 services:
+
   db:
     image: postgres:10.1
     volumes:
         - /var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER:'postgres'
+      - POSTGRES_PASSWORD:'postgres'
+      - POSTGRES_DB:'postgres'
+    ports:
+      - "5432:5432"
+
   backend:
     build: ./backend
     volumes:
@@ -12,12 +20,21 @@ services:
       - "8000:8000"
     stdin_open: true
     tty: true
-    command: python manage.py migrate --noinput
     command: python3 manage.py runserver 0.0.0.0:8000
     depends_on:
+      - migration
       - db
     environment:
       - DJANGO_SETTINGS_MODULE=backend.settings
+
+  migration:
+    build: ./backend
+    command: python3 manage.py migrate --noinput
+    volumes:
+      - ./backend:/app/backend
+    depends_on:
+      - db
+  
   frontend:
     build: ./frontend
     volumes:
