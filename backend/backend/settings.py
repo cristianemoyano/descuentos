@@ -134,6 +134,7 @@ STATIC_URL = '/static/'
 CORS_ORIGIN_WHITELIST = (
     'http://127.0.0.1:3000',
     'http://localhost:3000',
+    'https://descuentos-fe--app.herokuapp.com/',
 )
 
 db_from_env = dj_database_url.config(conn_max_age=500)
