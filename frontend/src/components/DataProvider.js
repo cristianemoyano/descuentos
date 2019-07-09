@@ -20,7 +20,7 @@ class DataProvider extends Component {
             <ConnectedLayout
                 data={tasks}
                 placeholder='No hay tareas'
-                title='Todo App'
+                title='Descuentos'
                 {...this}
             />
         );

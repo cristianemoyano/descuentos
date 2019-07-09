@@ -1,0 +1,138 @@
+[
+    {
+      "model": "app.Category",
+      "pk": 1,
+      "fields": {
+        "title": "Cafetería",
+        "description": "",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.Image",
+      "pk": 1,
+      "fields": {
+        "title": "Bonafide Logo",
+        "description": "",
+        "url": "https://kitsdepascua.com.ar/wp-content/uploads/2017/03/bonafide-logo-01-1-1024x724.jpg",
+        "extension": ".jpg",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+        "model": "app.Image",
+        "pk": 2,
+        "fields": {
+          "title": "default",
+          "description": "default",
+          "url": "http://calgarypma.ca/wp-content/uploads/2018/01/default-thumbnail.jpg",
+          "extension": ".jpg",
+          "created_date": "2019-07-09T17:51:28-03:00",
+          "modified_date": "2019-07-09T17:51:28-03:00"
+        }
+      },
+    {
+      "model": "app.Commerce",
+      "pk": 1,
+      "fields": {
+        "title": "Café Bonafide",
+        "description": "Café especial",
+        "category": 1,
+        "logo": 1,
+        "phone": "0261 423-3575",
+        "website": "http://www.bonafide.com.ar/",
+        "facebook": "https://www.facebook.com/BonafideArgentina/",
+        "twitter": "https://twitter.com/bonafidearg",
+        "instagram": "https://www.instagram.com/bonafidearg/",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+        "model": "app.CommerceAddress",
+        "pk": 1,
+        "fields": {
+          "commerce": 1,
+          "address_one": "Av. San Martín 1483",
+          "address_two": "",
+          "city": "Mendoza",
+          "state": "Mendoza",
+          "zip_code": "M5500",
+          "country": "Argentina",
+          "latitude": "-32.9122391",
+          "longitude": "-68.8696864",
+          "created_date": "2019-07-09T17:51:28-03:00",
+          "modified_date": "2019-07-09T17:51:28-03:00"
+        }
+    },
+    {
+      "model": "app.CommerceBenefitType",
+      "pk": 1,
+      "fields": {
+        "code": "only_once",
+        "title": "Válido por única vez",
+        "description": "Válido una sola vez",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.CommerceBenefitType",
+      "pk": 2,
+      "fields": {
+        "code": "always_available",
+        "title": "Siempre disponible",
+        "description": "Válido una sola vez",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.CommerceBenefit",
+      "pk": 1,
+      "fields": {
+        "title": "2x1",
+        "description": "Máximo 1 kilo",
+        "benefit_type": 1,
+        "commerce_address": 1,
+        "expiration": null,
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.CommerceUserBenefitStatus",
+      "pk": 1,
+      "fields": {
+        "code": "created",
+        "title": "Creado",
+        "description": "Listo para usar",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.CommerceUserBenefitStatus",
+      "pk": 2,
+      "fields": {
+        "code": "traded",
+        "title": "Canjeado",
+        "description": "Beneficio canjeado",
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    },
+    {
+      "model": "app.CommerceUserBenefit",
+      "pk": 1,
+      "fields": {
+        "benefit": 1,
+        "user": 1,
+        "status": 1,
+        "created_date": "2019-07-09T17:51:28-03:00",
+        "modified_date": "2019-07-09T17:51:28-03:00"
+      }
+    }
+]
