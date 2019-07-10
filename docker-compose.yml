@@ -29,7 +29,7 @@ services:
 
   migration:
     build: ./backend
-    command: python3 manage.py migrate && python manage.py loaddata initial_fixture
+    command: python3 manage.py migrate
     volumes:
       - ./backend:/app/backend
     depends_on:
