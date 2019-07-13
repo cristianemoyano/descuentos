@@ -6,3 +6,6 @@ build:
 
 shell:
 	docker run -it backend /bin/bash
+
+local:
+	python3 manage.py runserver 127.0.0.1:8000 --settings=backend.local_settings

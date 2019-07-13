@@ -2,7 +2,7 @@ import {
     FETCH_TASKS_PENDING,
     FETCH_TASKS_SUCCESS,
     FETCH_TASKS_ERROR
-} from '../actions';
+} from '../actions/tasks';
 
 const initialState = {
     pending: false,

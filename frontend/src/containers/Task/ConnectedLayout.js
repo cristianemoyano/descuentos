@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
-import Layout from '../components/Layout';
-import {addTask} from '../actions';
+import Layout from '../../components/Task/Layout';
+import {addTask} from '../../actions/tasks';
 
 const _mapDispatchToProps = (dispatch) => ({
     addTask: task => dispatch(addTask(task)),

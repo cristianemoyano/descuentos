@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 
-import Modal from '../components/Modal'
-import ConnectedItems from '../containers/ConnectedItems'
+import Modal from './Modal'
+import ConnectedItems from '../../containers/Task/ConnectedItems'
+import BaseLayout from '../Base/BaseLayout'
+
+import {LAYOUT_COMPONENT_TEXTS} from './constants'
 
 
 class Layout extends Component {
@@ -44,7 +47,7 @@ class Layout extends Component {
             <div className="list-group-item d-flex justify-content-between align-items-center">
                 {placeholder}
                 <button onClick={this.createItem} className="btn btn-primary">
-                      Add task
+                      {LAYOUT_COMPONENT_TEXTS.addTask}
                 </button>
             </div>
         );
@@ -60,19 +63,12 @@ class Layout extends Component {
         );
 
         return (
-            <main className="content">
-            <h1 className="text-white text-uppercase text-center my-4">{title}</h1>
-            <div className="row ">
-              <div className="col-md-6 col-sm-10 mx-auto p-0">
-                <div className="card p-3">
+            <BaseLayout title={title}>
                   <ul className="list-group list-group-flush">
                     {table}
                     {modal}
                   </ul>
-                </div>
-              </div>
-            </div>
-          </main>
+            </BaseLayout>
         );
     }
 }

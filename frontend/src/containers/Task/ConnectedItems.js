@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
-import Items from '../components/Items';
-import {deleteTask, editTask, addTask} from '../actions';
+import Items from '../../components/Task/Items';
+import {deleteTask, editTask, addTask} from '../../actions/tasks';
 
 const _mapStateToProps = ({tasks}) => ({
     tasks: tasks.tasks,

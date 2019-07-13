@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
-import Modal from '../components/Modal'
+import Modal from './Modal'
+import {ItemCard} from './ItemCard'
+import {FilterTab} from './FilterTab'
+import {ITEMS_COMPONENT_TEXTS} from './constants'
+
 
 export default class Items extends Component {
 
@@ -52,25 +56,6 @@ export default class Items extends Component {
             }
             return this.setState({ viewCompleted: false });
         };
-
-        renderTabList = () => {
-            return (
-              <div className="my-5 tab-list">
-                <span
-                  onClick={() => this.displayCompleted(true)}
-                  className={this.state.viewCompleted ? "active" : ""}
-                >
-                  complete
-                </span>
-                <span
-                  onClick={() => this.displayCompleted(false)}
-                  className={this.state.viewCompleted ? "" : "active"}
-                >
-                  Incomplete
-                </span>
-              </div>
-            );
-        };
     
         render() {
             const { tasks } = this.props;
@@ -81,36 +66,14 @@ export default class Items extends Component {
             );
 
             let items = newItems.map(
-                    item => (
-                        <li
-                            key={item.id}
-                            className="list-group-item d-flex justify-content-between align-items-center"
-                        >
-                            <span
-                                className={`todo-title mr-2 ${
-                                    this.state.viewCompleted ? "completed-todo" : ""
-                                }`}
-                                title={item.description}
-                            >
-                                {item.title}
-                            </span>
-                            <span>
-                                <button
-                                    onClick={() => this.editItem(item)}
-                                    className="btn btn-secondary mr-2"
-                                >
-                                    {" "}
-                                    Edit{" "}
-                                </button>
-                                <button
-                                    onClick={() => this.handleDelete(item)}
-                                    className="btn btn-danger"
-                                >
-                                    Delete{" "}
-                                </button>
-                            </span>
-                        </li>
-                    )
+                item => (
+                    <ItemCard
+                        item={item}
+                        viewCompleted={viewCompleted}
+                        onEdit={this.editItem}
+                        onDelete={this.handleDelete}
+                    />
+                )
             );
 
             let modal = this.state.modal ? (
@@ -126,9 +89,12 @@ export default class Items extends Component {
             return (
                 <div className="column">
                     <button onClick={this.createItem} className="btn btn-primary">
-                      Add task
+                        {ITEMS_COMPONENT_TEXTS.addTask}
                     </button>
-                    {this.renderTabList()}
+                    <FilterTab
+                        viewCompleted={this.state.viewCompleted}
+                        displayCompleted={this.displayCompleted}
+                    />
                     {items}
                     {modal}
                 </div>

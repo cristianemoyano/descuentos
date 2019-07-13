@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
-import ConnectedLayout from '../containers/ConnectedLayout';
+import ConnectedLayout from '../../containers/Task/ConnectedLayout';
+
+import {DATA_PROVIDER_COMPONENT_TEXTS} from './constants'
 
 
 class DataProvider extends Component {
@@ -19,8 +21,8 @@ class DataProvider extends Component {
         return (
             <ConnectedLayout
                 data={tasks}
-                placeholder='No hay tareas'
-                title='Descuentos'
+                placeholder={DATA_PROVIDER_COMPONENT_TEXTS.placeholder}
+                title={DATA_PROVIDER_COMPONENT_TEXTS.title}
                 {...this}
             />
         );

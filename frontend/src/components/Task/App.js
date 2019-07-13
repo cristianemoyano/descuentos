@@ -1,12 +1,13 @@
 import React, { Component } from "react";
+
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk';
 
-import ConnectedPage from '../containers/ConnectedPage';
-import rootReducer from '../reducers'
+import ConnectedPage from '../../containers/Task/ConnectedPage'
+import rootReducer from '../../reducers'
 
-export default class App extends Component {
+export default class Task extends Component {
 
   constructor(props) {
     super(props);

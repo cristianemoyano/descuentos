@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 
-import DataProvider from '../components/DataProvider';
-import {fetchTasks} from '../actions';
+import DataProvider from '../../components/Task/DataProvider';
+import {fetchTasks} from '../../actions/tasks';
 
 
 const _mapStateToProps = ({tasks}) => ({
