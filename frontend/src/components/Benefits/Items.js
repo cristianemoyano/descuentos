@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 
+import { Row, Col } from 'reactstrap';
+
 import Modal from './Modal'
 import {ItemCard} from './ItemCard'
-import {FilterTab} from './FilterTab'
+
 import {ITEMS_COMPONENT_TEXTS} from './constants'
 
 
@@ -11,7 +13,6 @@ export default class Items extends Component {
         constructor(props) {
             super(props);
             this.state = {
-                viewCompleted: false,
                 modal: false,
                 activeItem: {
                     title: "",
@@ -21,12 +22,12 @@ export default class Items extends Component {
             };
         }
 
-        editItem = item => {
+        viewItem = item => {
             this.setState({ activeItem: item, modal: !this.state.modal });
         };
     
         handleDelete = item => {
-            this.props.deleteTask(item.id);
+            this.props.deleteBenefit(item.id);
         };
 
         toggle = () => {
@@ -42,10 +43,10 @@ export default class Items extends Component {
             this.toggle();
 
             if (item.id) {
-                this.props.editTask(item);
+                this.props.editBenefit(item);
                 return;
             } else {
-                this.props.addTask(item);
+                this.props.addBenefit(item);
             }
 
         };
@@ -56,46 +57,46 @@ export default class Items extends Component {
             }
             return this.setState({ viewCompleted: false });
         };
+
+        validBenefits = item => {
+            const today = new Date();
+            const expiration = new Date(item.expiration);
+            const noExpiration = new Date(null); 
+            return (expiration.getTime() > today.getTime() || expiration.getTime() === noExpiration.getTime())
+        };
     
         render() {
-            const { tasks } = this.props;
-            const { viewCompleted } = this.state;
+            const { benefits } = this.props;
+            
+            const validBenefits = benefits.filter(this.validBenefits);
 
-            const newItems = tasks.filter(
-                item => item.completed === viewCompleted
-            );
-
-            let items = newItems.map(
+            let items = validBenefits.map(
                 item => (
-                    <ItemCard
-                        item={item}
-                        viewCompleted={viewCompleted}
-                        onEdit={this.editItem}
-                        onDelete={this.handleDelete}
-                    />
+                    <Col sm="3" key={item.id}>
+                        <ItemCard
+                            key={item.id}
+                            item={item}
+                            onView={this.viewItem}
+                        />
+                    </Col>
                 )
             );
 
             let modal = this.state.modal ? (
-                    <Modal
-                        activeItem={this.state.activeItem}
-                        toggle={this.toggle}
-                        onSave={this.handleSubmit}
-                    />
+                <Modal
+                    activeItem={this.state.activeItem}
+                    toggle={this.toggle}
+                    onSave={this.handleSubmit}
+                />
             ) : (
                 null
             );
     
             return (
                 <div className="column">
-                    <button onClick={this.createItem} className="btn btn-primary">
-                        {ITEMS_COMPONENT_TEXTS.addTask}
-                    </button>
-                    <FilterTab
-                        viewCompleted={this.state.viewCompleted}
-                        displayCompleted={this.displayCompleted}
-                    />
-                    {items}
+                    <Row>
+                        {items}
+                    </Row>
                     {modal}
                 </div>
             );

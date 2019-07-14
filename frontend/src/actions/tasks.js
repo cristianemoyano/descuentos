@@ -32,7 +32,7 @@ export function fetchTasks() {
     return dispatch => {
         dispatch(fetchTasksPending());
         axios
-        .get(`${baseApiURL}/todos/`)
+        .get(`${baseApiURL}/todo`)
         .then(res => dispatch(fetchTasksSuccess(res.data)))
         .catch(error => {
             dispatch(fetchTasksError(error));
@@ -74,7 +74,7 @@ export function deleteTask(taskId) {
     return dispatch => {
         dispatch(deleteTaskPending());
         axios
-        .delete(`${baseApiURL}/todos/${taskId}`)
+        .delete(`${baseApiURL}/todo/${taskId}`)
         .then(res => dispatch(deleteTaskSuccess(res.data)))
         .catch(error => {
             dispatch(deleteTaskError(error));
@@ -116,7 +116,7 @@ export function editTask(item) {
     return dispatch => {
         dispatch(editTaskPending());
         axios
-        .put(`${baseApiURL}/todos/${item.id}/`, item)
+        .put(`${baseApiURL}/todo/${item.id}`, item)
         .then(res => dispatch(editTaskSuccess(res.data)))
         .catch(error => {
             dispatch(editTaskError(error));
@@ -158,7 +158,7 @@ export function addTask(item) {
     return dispatch => {
         dispatch(addTaskPending());
         axios
-        .post(`${baseApiURL}/todos/`, item)
+        .post(`${baseApiURL}/todo`, item)
         .then(res => dispatch(addTaskSuccess(res.data)))
         .catch(error => {
             dispatch(addTaskError(error));

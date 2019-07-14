@@ -40,6 +40,9 @@ export class Menu extends Component {
                     <NavItem>
                         <Link className="nav-link" to="/topics">{MENU_COMPONENT_TEXTS.topics}</Link>
                     </NavItem>
+                    <NavItem>
+                        <Link className="nav-link" to="/benefits">{MENU_COMPONENT_TEXTS.benefits}</Link>
+                    </NavItem>
                     <UncontrolledDropdown nav inNavbar>
                         <DropdownToggle nav caret>
                         Options

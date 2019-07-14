@@ -1,21 +1,28 @@
 import React, { Component } from 'react';
+
+import {
+    Container,
+    Row,
+} from "reactstrap";
+
 import Header from './Header'
+
 
 export default class BaseLayout extends Component {
     render() {
         return (
-            <main className="content">
-                    <Header
-                        title={this.props.title}
-                    />
-                <div className="row ">
-                    <div className="col-md-6 col-sm-10 mx-auto p-0">
-                        <div className="card p-3">
+            <Container fluid={true}>
+                <Header
+                    title={this.props.title}
+                />
+                <Row>
+                    <div className="mx-auto p-0">
+                        <div className="card p-5">
                             {this.props.children}
                         </div>
                     </div>
-                </div>
-            </main>
+                </Row>
+            </Container>
         );
     }
 }

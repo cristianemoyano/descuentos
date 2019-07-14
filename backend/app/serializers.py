@@ -4,6 +4,8 @@ from .models.commerce import (
     Commerce,
     Category,
     CommerceAddress,
+    CommerceBenefit,
+    CommerceBenefitType,
 )
 from .models.image import Image
 
@@ -14,6 +16,7 @@ class TodoSerializer(serializers.ModelSerializer):
         model = Todo
         fields = ('id', 'title', 'description', 'completed')
 
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -22,6 +25,7 @@ class CategorySerializer(serializers.ModelSerializer):
             'title',
             'description',
         )
+
 
 class CommerceSerializer(serializers.ModelSerializer):
     logo_url = serializers.ReadOnlyField(source='logo.url')
@@ -44,12 +48,13 @@ class CommerceSerializer(serializers.ModelSerializer):
             'modified_date',
             'deleted',
         )
-    
+
     def create(self, validated_data):
         category_request = validated_data.pop('category')
         logo = Image.objects.get(title='default')
         try:
-            category_model = Category.objects.get(title=category_request['title'])
+            category_model = Category.objects.get(
+                title=category_request['title'])
         except Category.DoesNotExist:
             category_model = Category.objects.create(**category_request)
 
@@ -77,4 +82,32 @@ class CommerceAddressSerializer(serializers.ModelSerializer):
             'country',
             'latitude',
             'longitude',
+        )
+
+
+class CommerceBenefitTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = CommerceBenefitType
+        fields = (
+            'id',
+            'code',
+            'title',
+            'description',
+        )
+
+
+class CommerceBenefitSerializer(serializers.ModelSerializer):
+    commerce_address = CommerceAddressSerializer(read_only=True)
+    benefit_type = CommerceBenefitTypeSerializer(read_only=True)
+
+    class Meta:
+        model = CommerceBenefit
+        fields = (
+            'id',
+            'title',
+            'description',
+            'benefit_type',
+            'commerce_address',
+            'expiration',
         )
