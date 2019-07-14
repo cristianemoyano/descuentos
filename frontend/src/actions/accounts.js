@@ -126,7 +126,7 @@ export function logoutUser() {
         if (token) {
             config.headers['Authorization'] = `Token ${token}`;
         }
-
+        localStorage.removeItem('token');
         axios
         .post(`${baseApiURL}/auth/logout`, null, config)
         .then(res => dispatch(logoutUserSuccess(res.data)))

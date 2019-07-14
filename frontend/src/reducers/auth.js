@@ -39,9 +39,7 @@ const auth = (state = initialState, action) => {
         case LOGIN_USER_ERROR:
         case FETCH_USER_ERROR:
         case LOGOUT_USER_SUCCESS:
-            localStorage.removeItem('token')
             return {
-                ...state,
                 token: null,
                 user: null,
                 isAuthenticated: false,

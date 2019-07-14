@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import {Link, Redirect} from 'react-router-dom';
 
 import BaseLayout from '../Base/BaseLayout'
+import {isLogin} from "../Base/utils";
 import {
     Button,
     Form,
@@ -33,7 +34,7 @@ export default class Login extends Component {
 
     render() {
 
-        if (this.props.auth.isAuthenticated) {
+        if (this.props.auth.isAuthenticated || isLogin()) {
             return <Redirect to="/benefits" />;
         }
         const { username, password } = this.state;
