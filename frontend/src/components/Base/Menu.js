@@ -1,5 +1,7 @@
 import React, {Component} from "react";
+
 import {Link} from "react-router-dom";
+
 import {
   Collapse,
   Navbar,
@@ -27,7 +29,9 @@ export class Menu extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
   render() {
+
     return (
         <Navbar color="light" light expand="md">
             <Link className="navbar-brand" to="/">{MENU_COMPONENT_TEXTS.brand}</Link>
@@ -49,14 +53,16 @@ export class Menu extends Component {
                         </DropdownToggle>
                         <DropdownMenu right>
                         <DropdownItem>
-                            Option 1
+                          <Link className="nav-link" to="/auth/login">{MENU_COMPONENT_TEXTS.login}</Link>
                         </DropdownItem>
                         <DropdownItem>
-                            Option 2
+                          <Link className="nav-link" to="/auth/register">{MENU_COMPONENT_TEXTS.register}</Link>
                         </DropdownItem>
                         <DropdownItem divider />
                         <DropdownItem>
-                            Reset
+                          <Link className="nav-link" to="/auth/logout">
+                            {MENU_COMPONENT_TEXTS.logout}
+                          </Link>
                         </DropdownItem>
                         </DropdownMenu>
                     </UncontrolledDropdown>

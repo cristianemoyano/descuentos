@@ -1,30 +1,21 @@
 import React, { Component } from 'react';
 
-import ConnectedLayout from '../../containers/Benefits/ConnectedLayout';
+import ConnectedLayout from '../../containers/Accounts/ConnectedLayout';
 
 import {DATA_PROVIDER_COMPONENT_TEXTS} from './constants'
 
 
 class DataProvider extends Component {
 
-    _fetchElements = () => {
-        this.props.getBenefits();
-        //this.props.fetchUser();
-    }
-
-    componentDidMount() {
-        this._fetchElements();
-    }
-
     render() {
-        const { benefits } = this.props;
+        const { accounts } = this.props;
 
         return (
             <ConnectedLayout
-                data={benefits}
+                data={accounts}
                 placeholder={DATA_PROVIDER_COMPONENT_TEXTS.placeholder}
                 title={DATA_PROVIDER_COMPONENT_TEXTS.title}
-                {...this}
+                {...this.props}
             />
         );
     }

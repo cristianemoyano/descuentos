@@ -46,6 +46,7 @@
         "facebook": "https://www.facebook.com/BonafideArgentina/",
         "twitter": "https://twitter.com/bonafidearg",
         "instagram": "https://www.instagram.com/bonafidearg/",
+        "owner": 1,
         "created_date": "2019-07-09T17:51:28-03:00",
         "modified_date": "2019-07-09T17:51:28-03:00"
       }
@@ -97,6 +98,7 @@
         "description": "Máximo 1 kilo",
         "benefit_type": 1,
         "commerce_address": 1,
+        "published_by": 1,
         "expiration": null,
         "created_date": "2019-07-09T17:51:28-03:00",
         "modified_date": "2019-07-09T17:51:28-03:00"

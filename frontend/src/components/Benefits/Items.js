@@ -5,9 +5,6 @@ import { Row, Col } from 'reactstrap';
 import Modal from './Modal'
 import {ItemCard} from './ItemCard'
 
-import {ITEMS_COMPONENT_TEXTS} from './constants'
-
-
 export default class Items extends Component {
 
         constructor(props) {

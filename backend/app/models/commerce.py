@@ -23,6 +23,7 @@ class Commerce(BaseModel):
     facebook = models.CharField(max_length=255, blank=True, default='')
     twitter = models.CharField(max_length=255, blank=True, default='')
     instagram = models.CharField(max_length=255, blank=True, default='')
+    owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.title
@@ -65,6 +66,7 @@ class CommerceBenefit(BaseModel):
     commerce_address = models.ForeignKey(
         CommerceAddress, on_delete=models.DO_NOTHING)
     expiration = models.DateTimeField(blank=True, null=True)
+    published_by = models.ForeignKey(User, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return "{title} - {commerce}".format(
